@@ -1,0 +1,27 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="box" style=" margin-left: 30%; margin-top: 2%">
+    <mat-card-header>
+      <mat-card-title style="margin-bottom: 5%">Log in</mat-card-title>
+    </mat-card-header>
+    <form class="example-form" [formGroup]="formLogin">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="E-mail" formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Senha" formControlName="password">
+        </mat-form-field>
+      </mat-card-content>
+      <div>
+        <button mat-stroked-button color="accent" (click)="onEntrar()" class="btn-block"
+                style="margin-bottom: 3%; width: 80%; margin-left: 10%">Entrar
+        </button>
+      </div>
+      <button mat-stroked-button color="accent" (click)="onRegistrar()" class="btn-block"
+              style="width: 50%; margin-left: 25%">Registre-se
+      </button>
+    </form>
+  </mat-card>
+
+</div>

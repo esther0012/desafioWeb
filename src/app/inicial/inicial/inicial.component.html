@@ -1,0 +1,94 @@
+<mat-card *ngIf="admin">
+  <mat-toolbar color="secondary">
+    Lista de Usuários
+    <div>
+      <button mat-raised-button (click)="onSair()" style="margin-left: 20%">Sair</button>
+    </div>
+  </mat-toolbar>
+
+  <div class="mat-elevation-z8">
+    <div *ngIf="$inicial | async as inicial; else loading">
+      <table mat-table [dataSource]="inicial">
+
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> No.</th>
+          <td mat-cell *matCellDef="let inicial"> {{inicial.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="password">
+          <th mat-header-cell *matHeaderCellDef> Senha</th>
+          <td mat-cell *matCellDef="let inicial"> {{inicial.password}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name</th>
+          <td mat-cell *matCellDef="let inicial"> {{inicial.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> E-mail</th>
+          <td mat-cell *matCellDef="let inicial"> {{inicial.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="permissao">
+          <th mat-header-cell *matHeaderCellDef> Permissão</th>
+          <td mat-cell *matCellDef="let inicial">
+            <mat-icon aria-hidden="false"
+                      aria-label="Permissão do usuário">{{inicial.permissao === 1 ? 'admin_panel_settings' : 'person'}}</mat-icon>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+            <button mat-raised-button color="accent" matTooltip="Adicionar usuário">
+              <mat-icon (click)="onAdd()">add</mat-icon>
+            </button>
+          </mat-header-cell>
+
+          <mat-cell *matCellDef="let inicial">
+<!--            <button mat-icon-button color="primary" aria-label="Editar Usuario" matTooltip="Editar">-->
+<!--              <mat-icon (click)="onEdit()">edit</mat-icon>-->
+<!--            </button>-->
+
+            <button mat-icon-button color="primary" aria-label="Resetar senha" matTooltip="Resetar" (click)="reset(inicial.id)">
+              <mat-icon>password</mat-icon>
+            </button>
+
+            <button mat-icon-button color="warn" matTooltip="Deletar" aria-label="Remover Ususario"
+                    (click)="delete(inicial.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <ng-template #loading>
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+  </div>
+
+</mat-card>
+
+
+<mat-card *ngIf="!admin">
+
+  <mat-toolbar color="secondary">
+    Usuário padrão
+    <div>
+      <button mat-raised-button (click)="onSair()" style="margin-left: 20%">Sair</button>
+    </div>
+  </mat-toolbar>
+
+
+
+</mat-card>
+<router-outlet></router-outlet>
+
+
