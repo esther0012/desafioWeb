@@ -24,15 +24,12 @@ export class LoginComponent implements OnInit {
     this.formLogin = this.builder.group({
       email: [null],
       password: [null]
-    })
+    });
 
   }
 
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.texto = params['DjncdNSnfdsA']
-      console.log(params)
-    });
+  ngOnInit(){
+
 
   }
 

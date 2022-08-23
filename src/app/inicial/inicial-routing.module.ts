@@ -5,9 +5,7 @@ import {InicialFormComponent} from "./inicial-form/inicial-form.component";
 import {InicialEditComponent} from "./inicial-edit/inicial-edit.component";
 
 const inicialRoutes: Routes = [
-  {path: 'inicial', component: InicialComponent},
-  {path: 'adicionar', component: InicialFormComponent},
-  {path: 'editar/:{id}', component: InicialEditComponent}
+  {path: 'inicial', component: InicialComponent}
 ];
 
 @NgModule({

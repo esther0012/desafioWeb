@@ -10,11 +10,8 @@ import {InicialEditComponent} from "../inicial/inicial-edit/inicial-edit.compone
 const routes: Routes = [
   {
     path: '', component: LoginComponent
-  },
-  {path: 'inicial', component: InicialComponent},
-  {path: 'inicial/adicionar', component: InicialFormComponent},
-  {path: 'inicial/editar:{id}', component: InicialEditComponent},
-  {path: 'loginform', component: LoginFormComponent},
+  }
+
 
 ];
 

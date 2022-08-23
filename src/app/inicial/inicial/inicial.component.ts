@@ -46,7 +46,7 @@ export class InicialComponent implements OnInit {
   }
 
   onAdd() {
-    this.router.navigate(['login/inicial/adicionar']);
+    this.router.navigate(['adicionar']);
   }
 
   delete(id: number) {

@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {LoginService} from "../services/login.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Location} from "@angular/common";
+import {InicialService} from "../../inicial/services/inicial.service";
+import {MatDialog} from "@angular/material/dialog";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-form',
@@ -13,10 +16,16 @@ export class LoginFormComponent implements OnInit {
 
   form: FormGroup;
 
+   texto!: string;
+
+
   constructor(private formBuilder: FormBuilder,
               private service: LoginService,
               private _snackBar: MatSnackBar,
-              private location: Location) {
+              private location: Location,
+              public dialog: MatDialog,
+              private router: Router,
+              private route: ActivatedRoute) {
 
     this.form = this.formBuilder.group({
       name: [null],
@@ -31,6 +40,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit() {
+    // this.route.queryParams.subscribe(params => {
+    //   this.texto = params['DjncdNSnfdsA']
+    //   console.log( params);
+    // })
     this.service.salvar(this.form.value)
       .subscribe(result => this.onSucess(), error => this.onError());
   }

@@ -11,7 +11,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule} from '@angular/forms';
 import {ValidacaoComponent} from './validacao/validacao/validacao.component';
 
 
@@ -34,7 +34,7 @@ import {ValidacaoComponent} from './validacao/validacao/validacao.component';
     FormsModule
 
   ],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule {
