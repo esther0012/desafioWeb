@@ -12,14 +12,11 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import {FormBuilder, FormsModule} from '@angular/forms';
-import {ValidacaoComponent} from './validacao/validacao/validacao.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ValidacaoComponent
-
+    AppComponent
   ],
   imports: [
     BrowserModule,
