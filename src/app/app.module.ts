@@ -12,6 +12,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import {FormBuilder, FormsModule} from '@angular/forms';
+import {LoaderModule} from "./shared/components/loader/loader.module";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {FormBuilder, FormsModule} from '@angular/forms';
     MatIconModule,
     MatTableModule,
     AppMaterialModule,
-    FormsModule
+    FormsModule,
+    LoaderModule
 
   ],
   providers: [FormBuilder],

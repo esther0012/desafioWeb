@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {InicialService} from "../../inicial/services/inicial.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -11,9 +11,13 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  public texto!: string;
-
+  // @ts-ignore
+  validar: boolean;
   formLogin: FormGroup;
+  displayedColumns = ['validado'];
+  // @ts-ignore
+  private codificado: string;
+
 
   constructor(private inicialService: InicialService,
               public dialog: MatDialog,
@@ -22,16 +26,23 @@ export class LoginComponent implements OnInit {
               private builder: FormBuilder) {
 
     this.formLogin = this.builder.group({
-      email: [null],
-      password: [null]
+      email: [null, [Validators.email, Validators.required]],
+      password: [null, [Validators.minLength(8), Validators.required]]
     });
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.codificado = params['DjncdNSnfdsA'];
+    })
+    if (this.codificado !== undefined){
+       this.validacao(this.codificado);
+    }
 
 
   }
+
 
   onEntrar() {
     this.inicialService.entrar(this.formLogin.value.email, this.formLogin.value.password)
@@ -51,4 +62,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['loginform'], {relativeTo: this.route});
   }
 
+  private validacao(codificado: string) {
+    this.inicialService.validar(codificado).subscribe(value => {
+      this.validar = true;
+    })
+
+  }
 }

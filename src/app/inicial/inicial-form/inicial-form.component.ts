@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {InicialService} from "../services/inicial.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Location} from "@angular/common";
@@ -19,10 +19,10 @@ export class InicialFormComponent implements OnInit {
               private location: Location) {
 
     this.form = this.formBuilder.group({
-      name: [null],
-      email: [null],
-      password: [null],
-      permissao: [null]
+      name: [null, Validators.required],
+      email: [null,  [Validators.required, Validators.email]],
+      password: [null, [Validators.minLength(8), Validators.required]],
+      permissao: [null, Validators.required]
     });
 
   }

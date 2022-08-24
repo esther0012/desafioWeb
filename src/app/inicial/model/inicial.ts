@@ -1,8 +1,8 @@
 export interface Inicial {
-    id: number;
-    name: string;
-    email: string;
-    password: string;
-    permissao: number;
-    descPermissao: string;
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+  permissao: number;
+  validado: number;
 }

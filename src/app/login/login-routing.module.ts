@@ -4,7 +4,6 @@ import {LoginComponent} from "./login/login.component";
 import {InicialComponent} from "../inicial/inicial/inicial.component";
 import {InicialFormComponent} from "../inicial/inicial-form/inicial-form.component";
 import {LoginFormComponent} from "./login-form/login-form.component";
-import {InicialEditComponent} from "../inicial/inicial-edit/inicial-edit.component";
 
 
 const routes: Routes = [

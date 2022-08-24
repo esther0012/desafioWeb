@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validator, Validators} from "@angular/forms";
 import {LoginService} from "../services/login.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Location} from "@angular/common";
-import {InicialService} from "../../inicial/services/inicial.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -16,22 +15,17 @@ export class LoginFormComponent implements OnInit {
 
   form: FormGroup;
 
-   texto!: string;
-
-
   constructor(private formBuilder: FormBuilder,
               private service: LoginService,
               private _snackBar: MatSnackBar,
               private location: Location,
-              public dialog: MatDialog,
-              private router: Router,
-              private route: ActivatedRoute) {
+              public dialog: MatDialog) {
 
     this.form = this.formBuilder.group({
-      name: [null],
-      email: [null],
-      password: [null],
-      permissao: [null]
+      name: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.minLength(8), Validators.required]],
+      permissao: [null, Validators.required]
     });
 
   }
@@ -40,10 +34,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.route.queryParams.subscribe(params => {
-    //   this.texto = params['DjncdNSnfdsA']
-    //   console.log( params);
-    // })
     this.service.salvar(this.form.value)
       .subscribe(result => this.onSucess(), error => this.onError());
   }

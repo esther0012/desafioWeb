@@ -17,17 +17,15 @@ export class InicialComponent implements OnInit {
 
   // @ts-ignore
   $inicial: Observable<Inicial[]> = [];
-  displayedColumns = ['id', 'name', 'email', 'permissao', 'actions'];
+  displayedColumns = ['id', 'name', 'email', 'permissao', 'validado', 'actions'];
   admin: boolean | undefined;
 
-  // inicialService: InicialFormDialogService;
   constructor(private inicialService: InicialService,
               public dialog: MatDialog,
               private router: Router,
               private route: ActivatedRoute,
               private location: Location) {
   }
-
 
   ngOnInit(): void {
     if (localStorage.getItem('permissao') === '1') {
@@ -37,7 +35,6 @@ export class InicialComponent implements OnInit {
       this.admin = false;
     }
   }
-
 
   onError(errorMsg: String) {
     this.dialog.open(ErrorDialogComponent, {
@@ -67,7 +64,7 @@ export class InicialComponent implements OnInit {
   getUsers() {
     this.$inicial = this.inicialService.list()
       .pipe(
-       catchError(error => {
+        catchError(error => {
           this.onError('Erro ao carregar usuários');
           return of([])
 
@@ -79,9 +76,6 @@ export class InicialComponent implements OnInit {
     this.location.back()
   }
 
-  onEdit() {
-    this.router.navigate(['login/inicial/editar:{id}']);
-  }
 
   reset(id: number) {
     this.inicialService.reset(id)

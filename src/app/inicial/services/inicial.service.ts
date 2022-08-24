@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Inicial} from "../model/inicial";
 import {HttpClient} from "@angular/common/http";
 import {first, tap} from "rxjs";
+import {InicialComponent} from "../inicial/inicial.component";
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,10 @@ export class InicialService {
 
   entrar(email: string, password: string) {
     return this.httpClient.get<Inicial>(this.API + '/entrar', {params: {email, password}})
+  }
+
+  validar(email: string){
+    return this.httpClient.get<Inicial>(this.API + '/validar', {params: {email}})
   }
 
 }

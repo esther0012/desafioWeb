@@ -8,6 +8,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {AppMaterialModule} from "../shared/app-material/app-material.module";
 import {LoginFormComponent} from './login-form/login-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {LoaderModule} from "../shared/components/loader/loader.module";
 
 
 @NgModule({
@@ -15,14 +16,15 @@ import {ReactiveFormsModule} from "@angular/forms";
     LoginComponent,
     LoginFormComponent
   ],
-  imports: [
-    CommonModule,
-    LoginRoutingModule,
-    MatIconModule,
-    MatButtonModule,
-    AppMaterialModule,
-    ReactiveFormsModule,
-  ]
+    imports: [
+        CommonModule,
+        LoginRoutingModule,
+        MatIconModule,
+        MatButtonModule,
+        AppMaterialModule,
+        ReactiveFormsModule,
+        LoaderModule,
+    ]
 })
 
 export class LoginModule {

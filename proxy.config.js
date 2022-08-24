@@ -3,8 +3,8 @@ const ProxyConfig = [
     context: [''],
     target: 'http://localhost:8081/',
     secure: false,
-    logLevel:'debug'
+    logLevel: 'debug'
   }
 ];
 
-module.exports =  ProxyConfig;
+module.exports = ProxyConfig;

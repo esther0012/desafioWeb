@@ -30,7 +30,6 @@ export class InicialEditComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   onSubmit() {
     this.service.salvar(this.form.value)
       .subscribe(result => this.onSucess(), error => this.onError());
@@ -39,7 +38,6 @@ export class InicialEditComponent implements OnInit {
   onCancel() {
     this.location.back()
   }
-
 
   private onSucess() {
     this._snackBar.open("Usuário salvo com sucesso", '', {duration: 5000});
