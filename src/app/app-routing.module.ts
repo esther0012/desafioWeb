@@ -12,9 +12,7 @@ const routes: Routes = [
   },
   {path: 'adicionar', component: InicialFormComponent, pathMatch: "prefix"},
   {path: 'loginform', component: LoginFormComponent, pathMatch: "prefix"},
-  {
-    path: 'inicial', component: InicialComponent
-  },
+  {path: 'inicial', component: InicialComponent, pathMatch: "full"},
   {
     path: 'adicionar',
     loadChildren: () => import('./inicial/inicial.module').then(m => m.InicialModule)
